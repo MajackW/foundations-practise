@@ -3,6 +3,7 @@ let num = 0;
 const buttons = document.querySelectorAll("button");
 const displayBox = document.querySelector(".display_num");
 displayBox.textContent = num;
+//window = document.window;
 
 function listener(){
     for(const button of buttons){
@@ -10,6 +11,18 @@ function listener(){
             updateNum(event.target.id);
         });
     }
+    window.addEventListener("keydown",(e) => {
+        checkKeyPressed(e);
+    });
+}
+
+function checkKeyPressed(event){
+    if (event.code == "NumpadAdd"){
+        updateNum("increment");
+    }else if (event.code == "NumpadSubtract"){
+        updateNum("decrement");
+    }
+
 }
 function updateNum(operation){
     if (operation === "increment" && num < 100){
