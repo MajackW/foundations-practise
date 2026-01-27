@@ -1,0 +1,38 @@
+body {
+    box-sizing: content-box;
+}
+button {
+    background-color: blue;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    font-size: larger;
+    padding: 10px;
+
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+}
+button:active {
+    transform:scale(0.80)
+}
+button:hover {
+    background-color: darkblue;
+}
+.box{
+    height: 100px;
+    width: 100px;
+}
+.squares-container{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.box:hover{
+    background-color: black !important;
+}
