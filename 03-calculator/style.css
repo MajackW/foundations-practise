@@ -1,0 +1,48 @@
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: blue;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin: 20px auto;
+    border: solid aqua;
+    padding: 10px;
+}
+.inputs {
+    display: flex;
+    width: 70%;
+    gap: 30px;
+}
+.display-screen {
+    border: solid blue;
+    width: 100%;
+    height: 50px;
+}
+button {
+    background-color: blue;
+    color: white;
+    height: 70px;
+    width: 70px;
+    border-radius: 5px;
+    padding: 5px;
+    border: none;
+}
+.operation {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.digits {
+    width: 50%;
+    gap: 10px;
+}
+button:hover {
+    background-color: aqua;
+    color: black;
+}
