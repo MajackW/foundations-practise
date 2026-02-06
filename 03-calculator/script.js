@@ -1,5 +1,6 @@
 const screen = document.querySelector(".display-screen")
 let answer = 0;
+let expression = "";
 const buttons = document.querySelectorAll("button");
 buttons.forEach((button) => {
     button.addEventListener("click", (e) => {
@@ -11,9 +12,12 @@ buttons.forEach((button) => {
 function display(value){
     if (value === "clear"){
         screen.replaceChildren();
-    } else if(value === "equal"){
-        ;
+        expression = "";
+    } else if(value === "equal" && expression.length != 0){
+        evaluate(expression);
     } else {
+        expression += value;
+        console.log(expression);
         const text = document.createElement("p");
         text.classList.add("text");
         text.textContent =value;
@@ -23,5 +27,4 @@ function display(value){
 }
 function checkValues(container){
     const content = container.textContent;
-    console.log(content);
 }
