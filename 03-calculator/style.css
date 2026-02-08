@@ -52,6 +52,9 @@ button {
     gap: 5px;
 }
 .digits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
     width: 50%;
 }
 button:hover {
