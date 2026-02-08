@@ -4,7 +4,7 @@ let expression = "";
 function run(){
     const buttons = document.querySelectorAll("button");
     buttons.forEach((button) => {
-    button.addEventListener("click", (e) => {
+        button.addEventListener("click", (e) => {
         const btnClass = e.target.className;
         console.log(btnClass);
         if (btnClass === "operand" && expression.length >= 3){
@@ -71,7 +71,7 @@ function evaluate(exp){
         display("clear");
         display(answer);
     }else{
-       run();
+       return;
     }
 
 
