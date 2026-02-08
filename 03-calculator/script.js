@@ -1,13 +1,24 @@
 const screen = document.querySelector(".display-screen")
 let answer = 0;
 let expression = "";
-const buttons = document.querySelectorAll("button");
-buttons.forEach((button) => {
+function run(){
+    const buttons = document.querySelectorAll("button");
+    buttons.forEach((button) => {
     button.addEventListener("click", (e) => {
-        display(e.target.value);
-        checkValues(screen);
+        const btnClass = e.target.className;
+        console.log(btnClass);
+        if (btnClass === "operand" && expression.length >= 3){
+            evaluate(expression);
+            display(e.target.value);
+        }else{
+            display(e.target.value);
+            checkValues(screen);
+        }
+
     })
 })
+}
+
 
 function display(value){
     if (value === "clear"){
@@ -35,7 +46,7 @@ function evaluate(exp){
     let num2 = "";
     let operand = "";
     let i = 0;
-    while(i < exp.length){
+    for(let i = 0; i < exp.length; i++){
         conditionNeg = (exp.at(i) === "-" && num1 === "+" ||
                         exp.at(i) === "+" && num1 === "-")
         conditionPos = (exp.at(i) === "-" && num1 === "-")
@@ -52,18 +63,37 @@ function evaluate(exp){
         }else if(operand != "" && num2 === ""){
             num2 += exp.at(i);
         }
-        i++;
     }
-    num1 = Number(num1);
-    num2 = Number(num2);
-    display("clear");
-    display(num1+num2);
-    console.log(num1);
-    console.log(operand);
-    console.log(num2);
+    if (num1 && operand && num2){
+        num1 = Number(num1);
+        num2 = Number(num2);
+        answer = Math.floor(calculate(num1,num2,operand));
+        display("clear");
+        display(answer);
+    }else{
+       run();
+    }
+
 
 }
 function isNumeric(val){
+    if (val === 0){
+        return true;
+    }
     const num = Number(val);
     return !Number.isNaN(num);
 }
+function calculate(num1,num2,operand){
+    if (operand === "+"){
+        return(num1+num2);
+    }else if(operand === "-"){
+        return(num1-num2);
+    }else if(operand === "x"){
+        return(num1*num2);
+    }else if(operand === "/"){
+        return(num1/num2);
+    }else if(operand ==="^"){
+        return(num1**num2);
+    }
+}
+run();
